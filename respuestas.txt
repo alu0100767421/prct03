@@ -9,4 +9,37 @@ Hello world
 La diferencia al ejecutar un programa con el intérprete de Ruby y el irb, es que el primero nos muestra por pantalla la cadena de caracteres que hemos introducido en el programa sin nada más y el segundo nos muestra la cadena de caracteres y nil, permitiendonos seguir introduciendo sentencias en el terminal.
 
 
+26.
+
+ 6: 
+     7: #set x to 10
+     8: x = 10
+     9: 
+    10: #start a PEPL session
+ => 11: binding.pry
+    12: 
+    13: #program resumes here (after pry session)
+    14: puts "program resumes here. Value of x is: #{x}."
+
+[1] pry(main)> puts x
+10
+=> nil
+[2] pry(main)> def hello
+[2] pry(main)*   puts "Hello world"
+[2] pry(main)* end  
+=> nil
+[3] pry(main)> hello
+Hello world
+=> nil
+[4] pry(main)> byebye
+bye bye World!!!
+=> nil
+[5] pry(main)> x = "changed"
+=> "changed"
+[6] pry(main)> exit
+program resumes here. Value of x is: changed.
+
+27.
+
+Con PRY, al utilizar binding.pry, nos abre una consola alternativa donde podemos ver que datos tenemos hasta ese momento e incluso podemos modificar el programa. Con el intérprete interactivo se ejecuta el programa con normalidad sin poder interrumpirlo.
 
