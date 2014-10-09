@@ -1,12 +1,14 @@
-18.
-2.0.0p247 :001 > puts "Hello world"
-Hello world
+18. 2.0.0p247 :001 > puts "Hello world" Hello world
  => nil 
 2.0.0p247 :002 >
 
 
 21.
-La diferencia al ejecutar un programa con el intérprete de Ruby y el irb, es que el primero nos muestra por pantalla la cadena de caracteres que hemos introducido en el programa sin nada más y el segundo nos muestra la cadena de caracteres y nil, permitiendonos seguir introduciendo sentencias en el terminal.
+La diferencia al ejecutar un programa con el intérprete de Ruby y el
+ irb, es que el primero nos muestra por pantalla la cadena de
+ caracteres que hemos introducido en el programa sin nada más y el
+ segundo nos muestra la cadena de caracteres y nil, permitiendonos
+ seguir introduciendo sentencias en el terminal.
 
 
 26.
@@ -41,5 +43,360 @@ program resumes here. Value of x is: changed.
 
 27.
 
-Con PRY, al utilizar binding.pry, nos abre una consola alternativa donde podemos ver que datos tenemos hasta ese momento e incluso podemos modificar el programa. Con el intérprete interactivo se ejecuta el programa con normalidad sin poder interrumpirlo.
+Con PRY, al utilizar binding.pry, nos abre una consola alternativa
+ donde podemos ver que datos tenemos hasta ese momento e incluso
+ podemos modificar el programa. Con el intérprete interactivo se
+ ejecutar el programa y me permite introducir sentencias y se van
+ejecutando.
+
+
+34.
+
+La diferencia entre "\t\n" y '\t\n' es que con la primera utilizamos
+comillas dobles y nos permite realizar un tabulador y un retorno de
+carro respectivamente sin salir nada por pantalla. En el segundo caso
+utilizamos unas comillas simples que nos permiten visualizar por
+pantalla tanto \t como \n.
+
+
+35.
+
+El %q nos permite no interpolar las cadenas, escribiéndolas de forma
+literal.
+
+Si introducimos %q{hello world\} nos motrará por pantalla
+ "hello wordl\n". Si introducimos %q{'a' 'b' 'c'} mostrará
+ "'a' 'b' 'c'".
+
+36.
+
+El %Q nos permite devolver la cadena e interpola.
+
+Si introducimos %Q{hello world\n} mostrará "hello world" y hará un
+retorno de carro. Si introducimos %Q{"a" "b" "c"} mostrará 
+""a" "b" "c"".
+
+
+37.
+
+En c quedará "--4--\n--2--\n"
+
+
+38.
+
+En c quedará "--\#{a}--\n--\#{b}--\n"
+
+39
+
+s[0,2] => "he" 
+s[-1,1] => "o" 
+s[0,10] => "hello" 
+
+40.
+
+En g quedará "hello world" 
+
+41.
+
+En e quedará "..."
+
+42.
+
+El resultado será "2 2 2 "
+
+43.
+
+Muestra:
+
+this
+is
+a
+test
+
+44.
+
+Muestra sus componentes sin interlpolar:
+
+\t
+\n
+
+45.
+
+No muestra nada por pantalla ya que interpola tanto el tabulador como
+el retorno de carro.
+
+
+46.
+
+Contiene un vector con elementos nulos: [nil, nil, nil]
+
+47.
+
+Contiene un vector con tres elementos: [0, 0, 0]
+
+
+48.
+
+En b quedará [[1, 2], [3, 4]]
+
+
+49.
+
+En c quedará [0, 2, 4]
+
+50.
+
+ > a = ('a'..'e').to_a
+ => ["a", "b", "c", "d", "e"] 
+ > a[1,1]
+ => ["b"] 
+ > a[-2,2]
+ => ["d", "e"] 
+ > a[0...1]
+ => ["a"] 
+ > a[-2..-1]
+ => ["d", "e"] 
+
+51.
+
+ > a
+ => ["a", "b", "c", "d", "e"] 
+ > a[0,2] = %w{A B}
+ => ["A", "B"] 
+ > a
+ => ["A", "B", "c", "d", ""] 
+ > a[2..5] = %w{C D E}
+ => ["C", "D", "E"] 
+ > a
+ => ["A", "B", "C", "D", "E"] 
+ > a[0,0] = [1,2,3]
+ => [1, 2, 3] 
+ > a
+ => [1, 2, 3, "A", "B", "C", "D", "E"] 
+ > a[0,2] = []
+ => [] 
+ > a
+ => [3, "A", "B", "C", "D", "E"] 
+ > a[-1,1] = [ 'Z' ]
+ => ["Z"] 
+ > a
+ => [3, "A", "B", "C", "D", "Z"] 
+ > a[-2,2] = nil
+ => nil 
+ > a
+ => [3, "A", "B", "C", nil]
+
+
+52.
+
+2.0.0-p247 :001 > a = (1...4).to_a
+ => [1, 2, 3] 
+2.0.0-p247 :002 > a = a + [4, 5]
+ => [1, 2, 3, 4, 5] 
+2.0.0-p247 :003 > a += [[6, 7, 8]]
+ => [1, 2, 3, 4, 5, [6, 7, 8]] 
+2.0.0-p247 :004 > a = a + 9
+TypeError: no implicit conversion of Fixnum into Array
+	from (irb):4:in `+'
+	from (irb):4
+	from /usr/local/rvm/rubies/ruby-2.0.0-p247/bin/irb:13:in `<main>'
+
+
+53.
+
+2.0.0-p247 :001 > x = %w{a b c d a}
+ => ["a", "b", "c", "d", "a"] 
+2.0.0-p247 :002 > x = x - %w{b c d}
+ => ["a", "a"] 
+
+
+54.
+
+2.0.0-p247 :001 > z = [0]*8
+ => [0, 0, 0, 0, 0, 0, 0, 0] 
+
+55.
+
+
+2.0.0-p247 :001 > a = []
+ => [] 
+2.0.0-p247 :002 > a << 1
+ => [1] 
+2.0.0-p247 :003 > a << 2 << 3
+ => [1, 2, 3] 
+2.0.0-p247 :004 > a << [4, 5, 6]
+ => [1, 2, 3, [4, 5, 6]] 
+2.0.0-p247 :005 > a.concat [7, 8]
+ => [1, 2, 3, [4, 5, 6], 7, 8] 
+
+
+56.
+
+
+2.0.0-p247 :001 > a = [1, 1, 2, 2, 3, 3, 4]
+ => [1, 1, 2, 2, 3, 3, 4] 
+2.0.0-p247 :002 > b = [5, 5, 4, 4, 3, 3, 2]
+ => [5, 5, 4, 4, 3, 3, 2] 
+2.0.0-p247 :003 > c = a | b
+ => [1, 2, 3, 4, 5] 
+2.0.0-p247 :004 > d = b | a
+ => [5, 4, 3, 2, 1] 
+2.0.0-p247 :005 > e = a & b
+ => [2, 3, 4] 
+2.0.0-p247 :006 > f = b & a
+ => [4, 3, 2] 
+
+
+57.
+
+
+2.0.0-p247 :001 > a = 1..10
+ => 1..10 
+2.0.0-p247 :002 > a.class
+ => Range 
+2.0.0-p247 :003 > a.to_a
+ => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+2.0.0-p247 :004 > b = 1...10
+ => 1...10 
+2.0.0-p247 :005 > b.to_a
+ => [1, 2, 3, 4, 5, 6, 7, 8, 9] 
+2.0.0-p247 :006 > b.include? 10
+ => false 
+2.0.0-p247 :007 > b.include? 8
+ => true 
+2.0.0-p247 :008 > b.step(2) {|x| print "#{x} "}
+1 3 5 7 9  => 1...10 
+2.0.0-p247 :009 > 1..2.to_a
+NoMethodError: undefined method `to_a' for 2:Fixnum
+	from (irb):9
+	from /usr/local/rvm/rubies/ruby-2.0.0-p247/bin/irb:13:in `<main>'
+
+58.
+
+
+2.0.0-p247 :001 > r = 0...100
+ => 0...100 
+2.0.0-p247 :002 > r.member? 50
+ => true 
+2.0.0-p247 :003 > r.include? 99.9
+ => true 
+2.0.0-p247 :004 > r.member? 99.9
+ => true 
+
+59.
+
+
+2.0.0-p247 :001 > true.class
+ => TrueClass 
+2.0.0-p247 :002 > false.class
+ => FalseClass 
+2.0.0-p247 :003 > puts "hello" if 0
+hello
+ => nil 
+2.0.0-p247 :004 > puts "hello" if nil
+ => nil 
+2.0.0-p247 :005 > puts "hello" if ""
+(irb):5: warning: string literal in condition
+hello
+ => nil 
+
+
+60.
+
+
+2.0.0-p247 :001 > x = :sym
+ => :sym 
+2.0.0-p247 :002 > x.class
+ => Symbol 
+2.0.0-p247 :003 > x == 'sym'
+ => false 
+2.0.0-p247 :004 > x == :sym
+ => true 
+2.0.0-p247 :005 > z = :'a long symbol'
+ => :"a long symbol" 
+2.0.0-p247 :006 > z.class
+ => Symbol 
+2.0.0-p247 :007 > x == 'sym'.to_sym
+ => true 
+
+
+61.
+
+
+2.0.0-p247 :001 > s = "Ruby"
+ => "Ruby" 
+2.0.0-p247 :002 > t = s
+ => "Ruby" 
+2.0.0-p247 :003 > t[-1] = ""
+ => "" 
+2.0.0-p247 :004 > print s
+Rub => nil 
+2.0.0-p247 :005 > t = "Java"
+ => "Java" 
+2.0.0-p247 :006 > print s, t
+RubJava => nil 
+
+
+62.
+
+
+2.0.0-p247 :001 > "%d %s" % [3, "rubies"]
+ => "3 rubies" 
+
+
+63.
+
+
+2.0.0-p247 :001 > x, y = 4, 5
+ => [4, 5] 
+2.0.0-p247 :002 > z = x > y ? x : y
+ => 5 
+2.0.0-p247 :003 > x,y,z = [1,2,3]
+ => [1, 2, 3] 
+
+
+64.
+
+
+2.0.0-p247 :002 > x = { :a => 1, :b => 2 }
+ => {:a=>1, :b=>2} 
+2.0.0-p247 :003 > x.keys
+ => [:a, :b] 
+2.0.0-p247 :004 > x.values
+ => [1, 2] 
+2.0.0-p247 :005 > x[:c]=3
+ => 3 
+2.0.0-p247 :006 > x
+ => {:a=>1, :b=>2, :c=>3} 
+2.0.0-p247 :007 > x.delete('a')
+ => nil 
+2.0.0-p247 :008 > x
+ => {:a=>1, :b=>2, :c=>3} 
+2.0.0-p247 :009 > x.delete(:a)
+ => 1 
+2.0.0-p247 :010 > x
+ => {:b=>2, :c=>3} 
+2.0.0-p247 :012 > x = { :a => 1, :b => 2, :c => 4 }
+ => {:a=>1, :b=>2, :c=>4} 
+2.0.0-p247 :013 > x.delete_if { |k,v| v % 2 == 0 }
+ => {:a=>1} 
+2.0.0-p247 :014 > x
+ => {:a=>1} 
+
+
+65.
+
+
+counts = Hash.new(0) creamos un vector vacío pero que puede contener
+ a parte de valores, punteros hacia esos valores. Pero en el
+ counts = {} se crea un vector vacío, por lo que en este caso no hay
+ diferencia.
+
+
+
+66. 
+
+ ["hello", "world", "hello", "LPP"]
+
+
 
